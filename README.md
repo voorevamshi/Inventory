@@ -1,466 +1,232 @@
-# \# 🚀 Inventory Search API
+# 🚀 Inventory Search API
 
-# 
+## 📌 Project Overview
 
-# \## 📌 Project Overview
+This project is a **RESTful Inventory Search API** built using **Spring Boot (Java 17)**.
+It allows users to search inventory items using **multiple optional filters (AND conditions)**.
 
-# 
+---
 
-# This project is a \*\*RESTful Inventory Search API\*\* built using \*\*Spring Boot (Java 17)\*\*.
+## 🛠️ Tech Stack
 
-# It allows users to search inventory items using \*\*multiple optional filters (AND conditions)\*\*.
+* Java 17
+* Spring Boot
+* Spring Data JPA
+* H2 Database
+* Swagger (Springdoc OpenAPI)
+* JUnit & Mockito
+* Docker
 
-# 
+---
 
-# ---
+## 🔍 Features
 
-# 
+### ✅ Search API
 
-# \## 🛠️ Tech Stack
+* Endpoint:
+  `GET /api/inventory/search`
 
-# 
+* Supports optional filters:
 
-# \* Java 17
+  * `name`
+  * `category`
+  * `price`
 
-# \* Spring Boot
+* Example:
 
-# \* Spring Data JPA
+  ```
+  /api/inventory/search?category=Electronics&price=50000
+  ```
 
-# \* H2 Database
+---
 
-# \* Swagger (Springdoc OpenAPI)
+### ✅ Dynamic Filtering
 
-# \* JUnit \& Mockito
+* Implemented using **JPA Specifications**
+* Supports flexible AND-based filtering
+* Scalable and maintainable design
 
-# \* Docker
+---
 
-# 
+### ✅ Pagination & Sorting
 
-# ---
+* Supports pagination using `Pageable`
 
-# 
+* Example:
 
-# \## 🔍 Features
+  ```
+  /api/inventory/search?page=0&size=5
+  ```
 
-# 
+* Response includes:
 
-# \### ✅ Search API
+  * totalElements
+  * totalPages
+  * current page data
 
-# 
+---
 
-# \* Endpoint:
+### ✅ Validation
 
-# &nbsp; `GET /api/inventory/search`
+* Implemented using **Jakarta Validation annotations**
+* Example:
 
-# 
+  ```java
+  @Min(0)
+  private Double price;
+  ```
 
-# \* Supports optional filters:
+---
 
-# 
+### ✅ Error Handling
 
-# &nbsp; \* `name`
+* Centralized using `@RestControllerAdvice`
 
-# &nbsp; \* `category`
+* Handles:
 
-# &nbsp; \* `price`
+  * Validation errors
+  * Illegal arguments
+  * Generic exceptions
 
-# 
+* Sample error response:
 
-# \* Example:
+  ```json
+  {
+    "timestamp": "...",
+    "status": 400,
+    "error": "Validation Error",
+    "message": "Price must be >= 0"
+  }
+  ```
 
-# 
+---
 
-# &nbsp; ```
+### ✅ API Documentation (Swagger)
 
-# &nbsp; /api/inventory/search?category=Electronics\&price=50000
+* Swagger UI:
 
-# &nbsp; ```
+  ```
+  http://localhost:8080/swagger-ui/index.html
+  ```
 
-# 
+* OpenAPI JSON:
 
-# ---
+  ```
+  http://localhost:8080/v3/api-docs
+  ```
 
-# 
+---
 
-# \### ✅ Dynamic Filtering
+### ✅ Database (H2)
 
-# 
+* In-memory database used for development
+* Console:
 
-# \* Implemented using \*\*JPA Specifications\*\*
+  ```
+  http://localhost:8080/h2-console
+  ```
 
-# \* Supports flexible AND-based filtering
+---
 
-# \* Scalable and maintainable design
+### ✅ Unit Testing
 
-# 
+* Implemented using **JUnit & Mockito**
+* Service layer tested
+* Repository interactions mocked
 
-# ---
+---
 
-# 
+### ✅ Docker Support
 
-# \### ✅ Pagination \& Sorting
+* Dockerized application
 
-# 
+#### Build:
 
-# \* Supports pagination using `Pageable`
+```
+docker build -t inventory-api .
+```
 
-# 
+#### Run:
 
-# \* Example:
+```
+docker run -p 8080:8080 inventory-api
+```
 
-# 
+---
 
-# &nbsp; ```
+## 📄 OpenAPI YAML
 
-# &nbsp; /api/inventory/search?page=0\&size=5
+* File: `openapi.yaml`
+* Included for documentation and assignment submission
 
-# &nbsp; ```
+---
 
-# 
+## 📂 Project Structure
 
-# \* Response includes:
+```
+controller → service → repository → entity
+```
 
-# 
+---
 
-# &nbsp; \* totalElements
+## ▶️ How to Run
 
-# &nbsp; \* totalPages
+### 1. Build project
 
-# &nbsp; \* current page data
+```
+mvn clean install
+```
 
-# 
+### 2. Run application
 
-# ---
+```
+mvn spring-boot:run
+```
 
-# 
+---
 
-# \### ✅ Validation
+## 🧪 Example API Calls
 
-# 
+### Get all electronics
 
-# \* Implemented using \*\*Jakarta Validation annotations\*\*
+```
+/api/inventory/search?category=Electronics
+```
 
-# \* Example:
+### Search by name
 
-# 
+```
+/api/inventory/search?name=iphone
+```
 
-# &nbsp; ```java
+### With pagination
 
-# &nbsp; @Min(0)
+```
+/api/inventory/search?category=Electronics&page=0&size=2
+```
 
-# &nbsp; private Double price;
+---
 
-# &nbsp; ```
+## 💡 Assumptions
 
-# 
+* All filters are optional
+* Filters are applied using AND condition
+* Name search is case-insensitive
 
-# ---
+---
 
-# 
+## 🎯 Conclusion
 
-# \### ✅ Error Handling
+This project demonstrates:
 
-# 
+* Clean architecture
+* Scalable search implementation
+* Proper validation and error handling
+* API documentation
+* Unit testing and containerization
 
-# \* Centralized using `@RestControllerAdvice`
+---
 
-# 
+## 👨‍💻 Author
 
-# \* Handles:
-
-# 
-
-# &nbsp; \* Validation errors
-
-# &nbsp; \* Illegal arguments
-
-# &nbsp; \* Generic exceptions
-
-# 
-
-# \* Sample error response:
-
-# 
-
-# &nbsp; ```json
-
-# &nbsp; {
-
-# &nbsp;   "timestamp": "...",
-
-# &nbsp;   "status": 400,
-
-# &nbsp;   "error": "Validation Error",
-
-# &nbsp;   "message": "Price must be >= 0"
-
-# &nbsp; }
-
-# &nbsp; ```
-
-# 
-
-# ---
-
-# 
-
-# \### ✅ API Documentation (Swagger)
-
-# 
-
-# \* Swagger UI:
-
-# 
-
-# &nbsp; ```
-
-# &nbsp; http://localhost:8080/swagger-ui/index.html
-
-# &nbsp; ```
-
-# 
-
-# \* OpenAPI JSON:
-
-# 
-
-# &nbsp; ```
-
-# &nbsp; http://localhost:8080/v3/api-docs
-
-# &nbsp; ```
-
-# 
-
-# ---
-
-# 
-
-# \### ✅ Database (H2)
-
-# 
-
-# \* In-memory database used for development
-
-# \* Console:
-
-# 
-
-# &nbsp; ```
-
-# &nbsp; http://localhost:8080/h2-console
-
-# &nbsp; ```
-
-# 
-
-# ---
-
-# 
-
-# \### ✅ Unit Testing
-
-# 
-
-# \* Implemented using \*\*JUnit \& Mockito\*\*
-
-# \* Service layer tested
-
-# \* Repository interactions mocked
-
-# 
-
-# ---
-
-# 
-
-# \### ✅ Docker Support
-
-# 
-
-# \* Dockerized application
-
-# 
-
-# \#### Build:
-
-# 
-
-# ```
-
-# docker build -t inventory-api .
-
-# ```
-
-# 
-
-# \#### Run:
-
-# 
-
-# ```
-
-# docker run -p 8080:8080 inventory-api
-
-# ```
-
-# 
-
-# ---
-
-# 
-
-# \## 📄 OpenAPI YAML
-
-# 
-
-# \* File: `openapi.yaml`
-
-# \* Included for documentation and assignment submission
-
-# 
-
-# ---
-
-# 
-
-# \## 📂 Project Structure
-
-# 
-
-# ```
-
-# controller → service → repository → entity
-
-# ```
-
-# 
-
-# ---
-
-# 
-
-# \## ▶️ How to Run
-
-# 
-
-# \### 1. Build project
-
-# 
-
-# ```
-
-# mvn clean install
-
-# ```
-
-# 
-
-# \### 2. Run application
-
-# 
-
-# ```
-
-# mvn spring-boot:run
-
-# ```
-
-# 
-
-# ---
-
-# 
-
-# \## 🧪 Example API Calls
-
-# 
-
-# \### Get all electronics
-
-# 
-
-# ```
-
-# /api/inventory/search?category=Electronics
-
-# ```
-
-# 
-
-# \### Search by name
-
-# 
-
-# ```
-
-# /api/inventory/search?name=iphone
-
-# ```
-
-# 
-
-# \### With pagination
-
-# 
-
-# ```
-
-# /api/inventory/search?category=Electronics\&page=0\&size=2
-
-# ```
-
-# 
-
-# ---
-
-# 
-
-# \## 💡 Assumptions
-
-# 
-
-# \* All filters are optional
-
-# \* Filters are applied using AND condition
-
-# \* Name search is case-insensitive
-
-# 
-
-# ---
-
-# 
-
-# \## 🎯 Conclusion
-
-# 
-
-# This project demonstrates:
-
-# 
-
-# \* Clean architecture
-
-# \* Scalable search implementation
-
-# \* Proper validation and error handling
-
-# \* API documentation
-
-# \* Unit testing and containerization
-
-# 
-
-# ---
-
-# 
-
-# \## 👨‍💻 Author
-
-# 
-
-# Your Name
-
-
-
+Your Name
