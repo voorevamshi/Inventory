@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: Inventory API
+  version: 1.0.0
+paths:
+  /api/inventory/search:
+    get:
+      summary: Search inventory
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+        - in: query
+          name: category
+          schema:
+            type: string
+        - in: query
+          name: price
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success

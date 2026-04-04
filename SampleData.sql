@@ -1,0 +1,14 @@
+INSERT INTO INVENTORY
+(name, category, subcategory, manufacturing_date, expiry_date, specification, price, stock, seller, location)
+VALUES
+    ('iPhone 13', 'Electronics', 'Mobile', '2023-01-01', '2026-01-01', '128GB', 80000, 10, 'Apple Store', 'Hyderabad');
+
+INSERT INTO INVENTORY
+(name, category, subcategory, manufacturing_date, expiry_date, specification, price, stock, seller, location)
+VALUES
+    ('Samsung TV', 'Electronics', 'TV', '2022-05-10', '2027-05-10', '4K UHD', 50000, 5, 'Samsung Store', 'Bangalore');
+
+INSERT INTO INVENTORY
+(name, category, subcategory, manufacturing_date, expiry_date, specification, price, stock, seller, location)
+VALUES
+    ('Milk Packet', 'Grocery', 'Dairy', '2026-04-01', '2026-04-05', '1L', 50, 100, 'Local Dairy', 'Chennai');
