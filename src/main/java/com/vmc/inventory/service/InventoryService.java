@@ -5,6 +5,8 @@ import com.vmc.inventory.entity.Inventory;
 import com.vmc.inventory.repository.InventoryRepository;
 import com.vmc.inventory.spec.InventorySpecification;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +18,14 @@ public class InventoryService {
 
     private final InventoryRepository repository;
 
-    public List<Inventory> search(String name, String category, Double price) {
+    public Page<Inventory> search(String name, String category, Double price, Pageable pageable) {
 
         Specification<Inventory> spec = Specification
                 .where(InventorySpecification.hasName(name))
                 .and(InventorySpecification.hasCategory(category))
                 .and(InventorySpecification.priceGreaterThan(price));
 
-        return repository.findAll(spec);
+        return repository.findAll(spec, pageable);
     }
+
 }
