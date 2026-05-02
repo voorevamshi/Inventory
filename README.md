@@ -5,6 +5,10 @@
 This project is a **RESTful Inventory Search API** built using **Spring Boot (Java 17)**.
 It allows users to search inventory items using **multiple optional filters (AND conditions)**.
 
+- [Docker Image Creation](https://github.com/voorevamshi/Docker/blob/main/jarToDockerImage.md)
+- [Running Docker Image on EC2](https://github.com/voorevamshi/Docker/blob/main/ec2DockerImageRunningCommands.md))
+- [Kubernetes Deploy](https://github.com/voorevamshi/Kubernetes/blob/main/workloads/deployments%20/InventoryApiDeployment.md)
+
 ---
 
 ## 🛠️ Tech Stack
