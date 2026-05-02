@@ -1,0 +1,38 @@
+inventory app releated
+$ kubectl get pods -o wide
+
+NAME                                        READY   STATUS             RESTARTS         AGE     IP               NODE                                            NOMINATED NODE   READINESS GATES
+
+inventory-api-deployment-7f5c5779c6-jqcwn   1/1     Running            0                2m44s   192.168.58.1     ip-192-168-45-100.ap-south-2.compute.internal   <none>           <none>
+
+inventory-api-deployment-7f5c5779c6-rzbww   1/1     Running            0                2m44s   192.168.87.33    ip-192-168-91-93.ap-south-2.compute.internal    <none>           <none>
+
+
+
+$ kubectl get svc inventory-api-service
+
+NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)        AGE
+
+inventory-api-service   LoadBalancer   10.100.145.109   a02ee697326104518bb44e00ec0adfd9-349829133.ap-south-2.elb.amazonaws.com   80:30429/TCP   14s
+
+
+http://a02ee697326104518bb44e00ec0adfd9-349829133.ap-south-2.elb.amazonaws.com/
+
+
+To see logs for one specific pod:
+		kubectl logs inventory-api-deployment-7f5c5779c6-jqcwn
+To follow logs in real-time (Tail):
+        kubectl logs -f inventory-api-deployment-7f5c5779c6-jqcwn
+To see logs from all pods in the deployment at once:
+		kubectl logs -l app=inventory-api --tail=20
+		
+inventory-api-deployment-7f5c5779c6-jqcwn
+		
+3. Understanding the Port Mapping
+Notice this line in your output: 80:30429/TCP. Here is what those numbers mean:
+
+80: This is the port on the LoadBalancer. This is what you use in the browser.
+
+30429: This is the NodePort. Kubernetes opened this high-numbered port 
+on every EC2 node. The LoadBalancer sends traffic to the nodes on this port, and the nodes then route it to your pod on 8080.
+

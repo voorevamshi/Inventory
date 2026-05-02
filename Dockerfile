@@ -1,3 +1,3 @@
-FROM openjdk:17-jdk-slim
-COPY target/inventory-search-api.jar app.jar
+FROM eclipse-temurin:17-jdk-jammy
+COPY target/Inventory-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
