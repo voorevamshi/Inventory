@@ -9,5 +9,5 @@ on:
 
 jobs:
   call-shared-workflow:
-    uses: YOUR_GITHUB_USERNAME/.github/.github/workflows/reusable-maven-docker.yml@main
+    uses: voorevamshi/github-actions/.github/workflows/reusable-maven-docker.yml@main
     secrets: inherit # Automatically passes all secrets without declaring them
