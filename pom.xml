@@ -125,12 +125,11 @@
     </build>
 
 	<distributionManagement>
-		<repository>
-		  <!-- Must match server-id: github in setup-java -->
-		  <id>github</id> 
-		  <name>GitHub Packages</name>
-		  <!-- Replace YOUR_GITHUB_USERNAME and YOUR_REPOSITORY_NAME -->
-		  <url>https://maven.pkg.github.com/voorevamshi/inventory-service</url>
-		</repository>
-	  </distributionManagement>
+	  <repository>
+		<id>github</id>
+		<name>GitHub Packages</name>
+		<url>https://maven.pkg.github.com/voorevamshi/${project.artifactId}</url>
+	  </repository>
+	</distributionManagement>
+	
 </project>
