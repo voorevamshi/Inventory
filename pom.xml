@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.vmc</groupId>
-    <artifactId>Inventory</artifactId>
+    <artifactId>inventory-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Inventory</name>
     <description>Inventory</description>
@@ -124,4 +124,13 @@
         </plugins>
     </build>
 
+	<distributionManagement>
+		<repository>
+		  <!-- Must match server-id: github in setup-java -->
+		  <id>github</id> 
+		  <name>GitHub Packages</name>
+		  <!-- Replace YOUR_GITHUB_USERNAME and YOUR_REPOSITORY_NAME -->
+		  <url>https://maven.pkg.github.com/voorevamshi/inventory-service</url>
+		</repository>
+	  </distributionManagement>
 </project>
