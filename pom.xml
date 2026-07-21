@@ -11,8 +11,8 @@
     <groupId>com.vmc</groupId>
     <artifactId>inventory-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Inventory</name>
-    <description>Inventory</description>
+    <name>inventory-service</name>
+    <description>inventory-service</description>
     <url/>
     <licenses>
         <license/>
