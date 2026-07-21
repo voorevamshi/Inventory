@@ -3,7 +3,6 @@
 
 name: Project CI/CD Flow
 
-name: Project CI/CD Flow
 
 on:
   # Allows manual triggering from the GitHub Actions tab UI
