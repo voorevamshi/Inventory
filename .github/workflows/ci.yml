@@ -7,7 +7,12 @@ on:
   release:
     types: [created]
 
+# GRANT PERMISSIONS HERE
+permissions:
+  contents: read
+  packages: write  # Allows the called workflow to publish to GitHub Packages
+
 jobs:
   call-shared-workflow:
     uses: voorevamshi/github-actions/.github/workflows/reusable-maven-docker.yml@main
-    secrets: inherit # Automatically passes all secrets without declaring them
+    secrets: inherit
