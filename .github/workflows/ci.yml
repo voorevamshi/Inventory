@@ -14,5 +14,5 @@ permissions:
 
 jobs:
   call-shared-workflow:
-    uses: voorevamshi/github-actions/.github/workflows/reusable-maven-docker.yml@main
+    uses: VamshiOrganization/github-actions/.github/workflows/reusable-maven-docker.yml@main
     secrets: inherit
